@@ -1,2 +1,5 @@
-const MyHeading = document.querySelector("h1");
-MyHeading.textContent = "Hello world!";
+let purpose = 0;
+function NGU(){
+    purpose = purpose + 1;
+    document.getElementById("purpose").innerHTML = purpose;
+}
