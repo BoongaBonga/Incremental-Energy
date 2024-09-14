@@ -38,6 +38,7 @@ window.setInterval(function(){
     if(purpose >= 10 && purpose < 50 && operationNr === 0){
         purpose_scale.innerHTML = "A flea notices you and jumps onto your hair.";
         document.getElementById("Idle_reflection").appendChild(Idle_reflection);
+        document.getElementById("Idle_reflection").appendChild(idleReflectionPriceDisplay);
         Idle_reflection.setAttribute("onClick", "buyIdleReflection(1)");
         operationNr = 1;
     }
