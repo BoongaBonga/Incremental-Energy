@@ -1,6 +1,6 @@
 let purpose = 0;
 let idleReflectionCount = 0;
-let idleReflectionPrice = 10;
+let idleReflectionPrice = 20;
 let operationNr = 0;
 const delay = 50;
 
@@ -37,17 +37,26 @@ window.setInterval(function(){
     //change scale based on purpose
     if(purpose >= 10 && purpose < 50 && operationNr === 0){
         purpose_scale.innerHTML = "A flea notices you and jumps onto your hair.";
-        document.getElementById("Idle_reflection").appendChild(Idle_reflection);
-        document.getElementById("Idle_reflection").appendChild(idleReflectionPriceDisplay);
-        Idle_reflection.setAttribute("onClick", "buyIdleReflection(1)");
+        
         operationNr = 1;
     }
     if(purpose >= 50 && purpose < 100 && operationNr === 1){
         purpose_scale.innerHTML = "A bird briefly lands near you before flying away.";
+        document.getElementById("Idle_reflection").appendChild(Idle_reflection);
+        document.getElementById("Idle_reflection").appendChild(idleReflectionPriceDisplay);
+        Idle_reflection.setAttribute("onClick", "buyIdleReflection(1)");
         operationNr = 2;
     }
     if(purpose >= 100 && purpose < 500 && operationNr === 2){
         purpose_scale.innerHTML = "A stray cat brushes against your leg.";
         operationNr = 3;
+    }
+    if(purpose >= 500 && purpose < 1000 && operationNr === 3){
+        purpose_scale.innerHTML = "A child looks at you, and then quickly loses interest";
+        operationNr = 4;
+    }
+    if(purpose >= 1000 && purpose < 10000 && operationNr === 4){
+        purpose_scale.innerHTML = "A neighbor glances at you through their window, but then quickly averts his gaze.";
+        operationNr = 5;
     }
 }, delay);
