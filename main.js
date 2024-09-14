@@ -1,6 +1,7 @@
 let purpose = 0;
 const purpose_scale = document.getElementById("purpose_scale");
 const Idle_reflection = document.createElement("button");
+Idle_reflection.textContent = "Idle reflection";
 
 function gainPurpose(){
     //increment purpose counter
