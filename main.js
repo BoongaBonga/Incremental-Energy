@@ -1,7 +1,7 @@
 let purpose = 0;
 const purpose_scale = document.getElementById("purpose_scale");
 const Idle_reflection = document.createElement("button");
-
+Idle_reflection.textContent = "Idle reflection";
 
 function gainPurpose(){
     //increment purpose counter
@@ -10,7 +10,6 @@ function gainPurpose(){
     //change scale based on purpose
     if(purpose >= 10 && purpose < 50){
         purpose_scale.innerHTML = "A flea notices you and jumps onto your hair.";
-        Idle_reflection.textContent = "Idle reflection";
         document.getElementById("Idle_reflection").appendChild(Idle_reflection);
     }
     if(purpose >= 50 && purpose < 100){
