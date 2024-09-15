@@ -23,7 +23,7 @@ function buyIdleReflection(count){
     if(purpose >= idleReflectionPrice){
         purpose = purpose - idleReflectionPrice;
         idleReflectionCount = idleReflectionCount + count;
-        idleReflectionPrice = Math.round(idleReflectionPrice * 1.3);
+        idleReflectionPrice = Math.round(idleReflectionPrice * 1.2);
         document.getElementById("idleReflectionPriceID").innerHTML = idleReflectionPrice;
     } else{
         Idle_reflection.innerHTML = "Not enough purpose";
