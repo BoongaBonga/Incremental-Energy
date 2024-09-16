@@ -50,6 +50,7 @@ window.setInterval(function(){
         //add the idle purpose button
         document.getElementById("Idle_reflection").appendChild(Idle_reflection);
         document.getElementById("Idle_reflection").insertAdjacentElement("beforeend", idleReflectionPriceDisplay);
+        idleReflectionPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
         Idle_reflection.setAttribute("onClick", "buyIdleReflection(1)");
         operationNr = 2;
     }
