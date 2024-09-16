@@ -1,6 +1,6 @@
 #idleReflectionPriceDisplay{
     height: 25px;
-    margin-top: 0px;
+    margin-top: 4px;
     margin-bottom: 0px;
     margin-left: 10px;
 }
@@ -8,6 +8,6 @@
 #Idle_reflection{
     position: relative;
     height: 25px;
-    top: px;
+    top: 0px;
     margin-bottom: 3px;
 }
