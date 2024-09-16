@@ -47,7 +47,7 @@ window.setInterval(function(){
         purpose_scale.innerHTML = "A bird briefly lands near you before flying away.";
         //add the idle purpose button
         document.getElementById("Idle_reflection").appendChild(Idle_reflection);
-        document.getElementById("Idle_reflection").appendChild(idleReflectionPriceDisplay);
+        document.getElementById("Idle_reflection").insertAdjacentElement("beforeend", idleReflectionPriceDisplay);
         Idle_reflection.setAttribute("onClick", "buyIdleReflection(1)");
         operationNr = 2;
     }
