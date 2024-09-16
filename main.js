@@ -8,6 +8,7 @@ const delay = 50;
 const purpose_scale = document.getElementById("purpose_scale");
 const Idle_reflection = document.createElement("button");
 Idle_reflection.textContent = "Idle reflection";
+Idle_reflection.setAttribute("id", "Idle_reflection");
 const idleReflectionPriceDisplay = document.createElement("p");
 idleReflectionPriceDisplay.innerHTML ="Buy for <span id = 'idleReflectionPriceID'>10</span> purpose (0.5 purpose/s)"
 idleReflectionPriceDisplay.setAttribute("id", "'idleReflectionPriceDisplay'");
