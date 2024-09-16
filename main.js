@@ -10,6 +10,7 @@ const Idle_reflection = document.createElement("button");
 Idle_reflection.textContent = "Idle reflection";
 const idleReflectionPriceDisplay = document.createElement("p");
 idleReflectionPriceDisplay.innerHTML = "Buy for <span id = 'idleReflectionPriceID'>10</span> purpose (0.5 purpose/s)";
+idleReflectionPriceDisplay.outerHTML = "<p id = 'idleReflectionPriceDisplay'></p>";
 
 //function for gaining purpose on click
 function gainPurpose(gain){

@@ -1,3 +1,5 @@
-#Idle_reflection{
-    text-align: right;
+#idleReflectionPriceDisplay{
+    position: absolute;
+    bottom: 25px;
+    right: 150px;
 }
