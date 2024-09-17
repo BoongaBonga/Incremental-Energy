@@ -27,6 +27,7 @@ sharpenFocus.setAttribute("onClick", "buySharpenFocus(1)");
 //sharpen focus price display
 const sharpenFocusPriceDisplay = document.createElement("p");
 sharpenFocusPriceDisplay.innerHTML = "Buy for <span id = 'sharpenFocusPriceDisplayID'>30</span> purpose (+50% Idle reflection effectiveness)";
+sharpenFocusPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
 
 //function for gaining purpose on click
 function gainPurpose(gain){
