@@ -54,17 +54,17 @@ function buySharpenFocus(count){
         purpose = purpose - sharpenFocusPrice;
         sharpenFocusCount = sharpenFocusCount + count;
         sharpenFocusPrice = Math.round(sharpenFocusPrice * 1.15);
-        document.getElementById("sharpenFocusPriceDisplayID").innerHTML = idleReflectionPrice;
+        document.getElementById("sharpenFocusPriceDisplayID").innerHTML = sharpenFocusPrice;
     } else {
         Idle_reflection.innerHTML = "Not enough purpose";
         setTimeout(1000);
-        Idle_reflection.innerHTML = "Idle reflection";
+        Idle_reflection.innerHTML = "Sharpen focus";
     }
 }
 
 //increase purpose counter every (delay)ms
 window.setInterval(function(){
-    purpose = purpose + idleReflectionCount + sharpenFocusCount/2 * idleReflectionCount *(delay/2000);
+    purpose = purpose + idleReflectionCount + (sharpenFocusCount/2 * idleReflectionCount) *(delay/2000);
     document.getElementById("purpose").innerHTML = Math.round(purpose);
 
     //change scale based on purpose
