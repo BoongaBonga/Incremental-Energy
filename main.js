@@ -1,17 +1,32 @@
 let purpose = 0;
 let idleReflectionCount = 0;
 let idleReflectionPrice = 10;
+let sharpenFocusCount = 0;
+let sharpenFocusPrice = 30;
 let operationNr = 0;
 const delay = 50;
 
 //make the button and co-existing text
+//purpose scale
 const purpose_scale = document.getElementById("purpose_scale");
+//idle reflection button
 const Idle_reflection = document.createElement("button");
 Idle_reflection.textContent = "Idle reflection";
 Idle_reflection.setAttribute("id", "Idle_reflection");
+Idle_reflection.setAttribute("onClick", "buyIdleReflection(1)");
+//idle reflection price display
 const idleReflectionPriceDisplay = document.createElement("p");
 idleReflectionPriceDisplay.innerHTML ="Buy for <span id = 'idleReflectionPriceID'>10</span> purpose (0.5 purpose/s)"
 idleReflectionPriceDisplay.setAttribute("id", "'idleReflectionPriceDisplay'");
+idleReflectionPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
+//sharpen focus button
+const sharpenFocus = document.createElement("button");
+sharpenFocus.textContent = "Sharpen focus";
+sharpenFocus.setAttribute("id", "idleReflection");
+sharpenFocus.setAttribute("onClick", "buySharpenFocus(1)");
+//sharpen focus price display
+const sharpenFocusPriceDisplay = document.createElement("p");
+sharpenFocusPriceDisplay.innerHTML = "Buy for <span id = 'sharpenFocusPriceDisplayID'>30</span> purpose (+50% Idle reflection effectiveness)";
 
 //function for gaining purpose on click
 function gainPurpose(gain){
@@ -25,7 +40,7 @@ function buyIdleReflection(count){
     if(purpose >= idleReflectionPrice){
         purpose = purpose - idleReflectionPrice;
         idleReflectionCount = idleReflectionCount + count;
-        idleReflectionPrice = Math.round(idleReflectionPrice * 1.2);
+        idleReflectionPrice = Math.round(idleReflectionPrice * 1.1);
         document.getElementById("idleReflectionPriceID").innerHTML = idleReflectionPrice;
     } else{
         Idle_reflection.innerHTML = "Not enough purpose";
@@ -34,9 +49,22 @@ function buyIdleReflection(count){
     }
 }
 
+function buySharpenFocus(count){
+    if(purpose >= sharpenFocusPrice){
+        purpose = purpose - sharpenFocusPrice;
+        sharpenFocusCount = sharpenFocusCount + count;
+        sharpenFocusPrice = Math.round(sharpenFocusPrice * 1.15);
+        document.getElementById("sharpenFocusPriceDisplayID").innerHTML = idleReflectionPrice;
+    } else {
+        Idle_reflection.innerHTML = "Not enough purpose";
+        setTimeout(1000);
+        Idle_reflection.innerHTML = "Idle reflection";
+    }
+}
+
 //increase purpose counter every (delay)ms
 window.setInterval(function(){
-    purpose = purpose + idleReflectionCount * (delay/2000);
+    purpose = purpose + idleReflectionCount + sharpenFocusCount/2 * idleReflectionCount *(delay/2000);
     document.getElementById("purpose").innerHTML = Math.round(purpose);
 
     //change scale based on purpose
@@ -50,8 +78,8 @@ window.setInterval(function(){
         //add the idle purpose button
         document.getElementById("Idle_reflection").appendChild(Idle_reflection);
         document.getElementById("Idle_reflection").insertAdjacentElement("beforeend", idleReflectionPriceDisplay);
-        idleReflectionPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
-        Idle_reflection.setAttribute("onClick", "buyIdleReflection(1)");
+        
+        
         operationNr = 2;
     }
     if(purpose >= 100 && purpose < 500 && operationNr === 2){
