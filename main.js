@@ -83,7 +83,7 @@ window.setInterval(function(){
     if(purpose >= 100 && purpose < 500 && operationNr === 2){
         purpose_scale.innerHTML = "A stray cat brushes against your leg.";
         document.getElementById("sharpenFocus").appendChild(sharpenFocus);
-        document.getElementById("sharpenFocus").insertAdjacentElement("beforeend", idleReflectionPriceDisplay);
+        document.getElementById("sharpenFocus").insertAdjacentElement("beforeend", sharpenFocusPriceDisplay);
         operationNr = 3;
     }
     if(purpose >= 500 && purpose < 1000 && operationNr === 3){
