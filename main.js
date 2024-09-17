@@ -22,7 +22,7 @@ idleReflectionPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom
 //sharpen focus button
 const sharpenFocus = document.createElement("button");
 sharpenFocus.textContent = "Sharpen focus";
-sharpenFocus.setAttribute("id", "idleReflection");
+sharpenFocus.setAttribute("id", "sharpenFocusButton");
 sharpenFocus.setAttribute("onClick", "buySharpenFocus(1)");
 //sharpen focus price display
 const sharpenFocusPriceDisplay = document.createElement("p");
@@ -78,12 +78,12 @@ window.setInterval(function(){
         //add the idle purpose button
         document.getElementById("Idle_reflection").appendChild(Idle_reflection);
         document.getElementById("Idle_reflection").insertAdjacentElement("beforeend", idleReflectionPriceDisplay);
-        
-        
         operationNr = 2;
     }
     if(purpose >= 100 && purpose < 500 && operationNr === 2){
         purpose_scale.innerHTML = "A stray cat brushes against your leg.";
+        document.getElementById("sharpenFocus").appendChild(sharpenFocus);
+        document.getElementById("sharpenFocus").insertAdjacentElement("beforeend", idleReflectionPriceDisplay);
         operationNr = 3;
     }
     if(purpose >= 500 && purpose < 1000 && operationNr === 3){
