@@ -65,7 +65,8 @@ function buySharpenFocus(count){
 
 //increase purpose counter every (delay)ms
 window.setInterval(function(){
-    purpose = purpose + idleReflectionCount + (sharpenFocusCount/2 * idleReflectionCount) *(delay/2000);
+    purpose = purpose + idleReflectionCount * (delay/2000);
+    purpose = purpose + idleReflectionCount * (delay/2000) * (sharpenFocusCount * 0.5);
     document.getElementById("purpose").innerHTML = Math.round(purpose);
 
     //change scale based on purpose
