@@ -96,4 +96,12 @@ window.setInterval(function(){
         purpose_scale.innerHTML = "A neighbor glances at you through their window, but then averts his gaze.";
         operationNr = 5;
     }
+    if(purpose >= 10000 && purpose < 100000 && operationNr === 5){
+        purpose_scale.innerHTML = "A stranger pauses for a moment, sensing something familiar, then continues on without a second thought.";
+        operationNr = 6;
+    }
+    if(purpose >= 100000 && purpose < 1000000 && operationNr === 6){
+        purpose_scale.innerHTML = "Far away, your mother pauses while doing the dishes, a fleeting thought of you crossing her mind, though she can't quite recall why.";
+        operationNr = 7;
+    }
 }, delay);
