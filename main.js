@@ -96,7 +96,7 @@ function buySeekValidation(count){
 //increase purpose counter every (delay)ms
 window.setInterval(function(){
     //idle reflection purpose
-    IdleReflectionPurposeGain = purpose + idleReflectionCount * (delay/2000);
+    IdleReflectionPurposeGain = idleReflectionCount * (delay/2000);
     //sharpen focus purpose
     sharpenFocusPurposeGain = IdleReflectionPurposeGain * (sharpenFocusCount * 0.5);
     //seek validation purpose
