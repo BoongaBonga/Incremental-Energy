@@ -6,6 +6,9 @@ let sharpenFocusPrice = 30;
 let seekValidationCount = 0;
 let seekValidationPrice = 15;
 let operationNr = 0;
+let seekValidationPurposeGain = 0;
+let sharpenFocusPurposeGain = 0;
+let IdleReflectionPurposeGain = 0;
 const delay = 50;
 
 //make the button and co-existing text
@@ -93,11 +96,11 @@ function buySeekValidation(count){
 //increase purpose counter every (delay)ms
 window.setInterval(function(){
     //idle reflection purpose
-    let IdleReflectionPurposeGain = purpose + idleReflectionCount * (delay/2000);
+    IdleReflectionPurposeGain = purpose + idleReflectionCount * (delay/2000);
     //sharpen focus purpose
-    let sharpenFocusPurposeGain = IdleReflectionPurposeGain * (sharpenFocusCount * 0.5);
+    sharpenFocusPurposeGain = IdleReflectionPurposeGain * (sharpenFocusCount * 0.5);
     //seek validation purpose
-    let seekValidationPurposeGain = IdleReflectionPurposeGain * (seekValidationCount * 0.2);
+    seekValidationPurposeGain = IdleReflectionPurposeGain * (seekValidationCount * 0.2);
     seekValidationPurposeGain = seekValidationPurposeGain + sharpenFocusPurposeGain * (seekValidationCount * 0.2);
     purpose = purpose + IdleReflectionPurposeGain + sharpenFocusPurposeGain + seekValidationPurposeGain;
     document.getElementById("purpose").innerHTML = Math.round(purpose);
