@@ -93,12 +93,13 @@ function buySeekValidation(count){
 //increase purpose counter every (delay)ms
 window.setInterval(function(){
     //idle reflection purpose
-    purpose = purpose + idleReflectionCount * (delay/2000);
+    let IdleReflectionPurposeGain = purpose + idleReflectionCount * (delay/2000);
     //sharpen focus purpose
-    purpose = purpose + idleReflectionCount * (delay/2000) * (sharpenFocusCount * 0.5);
+    let sharpenFocusPurposeGain = IdleReflectionPurposeGain * (sharpenFocusCount * 0.5);
     //seek validation purpose
-    purpose = purpose + idleReflectionCount * (delay/2000) * (seekValidationCount * 0.2);
-    purpose = purpose + idleReflectionCount * (delay/2000) * (sharpenFocusCount * 0.5) * (seekValidationCount * 0.2);
+    let seekValidationPurposeGain = IdleReflectionPurposeGain * (seekValidationCount * 0.2);
+    seekValidationPurposeGain = seekValidationPurposeGain + sharpenFocusPurposeGain * (seekValidationCount * 0.2);
+    purpose = purpose + IdleReflectionPurposeGain + sharpenFocusPurposeGain + seekValidationPurposeGain;
     document.getElementById("purpose").innerHTML = Math.round(purpose);
 
     //change scale based on purpose
