@@ -5,7 +5,7 @@ let idleReflectionPrice = 10;
 let sharpenFocusCount = 0;
 let sharpenFocusPrice = 30;
 let seekValidationCount = 0;
-let seekValidationPrice = 15;
+let seekValidationPrice = 100;
 let operationNr = 0;
 let seekValidationPurposeGain = 0;
 let sharpenFocusPurposeGain = 0;
@@ -58,7 +58,7 @@ seekValidationButton.setAttribute("id", "seekValidationButton");
 seekValidationButton.setAttribute("onClick", "buySeekValidation(1)");
 //seek validation price display
 const seekValidationPriceDisplay = document.createElement("p");
-seekValidationPriceDisplay.innerHTML = "Buy for <span id='seekValidationPriceDisplayID'>15</span> purpose (+20% all purpose)";
+seekValidationPriceDisplay.innerHTML = "Buy for <span id='seekValidationPriceDisplayID'>100</span> purpose (+20% all purpose)";
 seekValidationPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
 
 //function for gaining purpose on click
