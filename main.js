@@ -12,9 +12,18 @@ let sharpenFocusPurposeGain = 0;
 let IdleReflectionPurposeGain = 0;
 let totalPurposeGain = 0;
 const delay = 50;
+const statisticsClass = document.getElementsByClassName("statistic");
 
 //MENU BUTTONS
-
+function statisticsDropdown(){
+    for(let i = 0; i < statisticsClass.length; i++){
+        if(statisticsClass[i].style.visibility === "hidden"){
+            statisticsClass[i].style.visibility = "visible";
+        } else{
+            statisticsClass[i].style.visibility = "hidden";
+        }
+    }
+}
 
 //UPGRADES
 //make the button and co-existing text
