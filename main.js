@@ -70,37 +70,37 @@ window.setInterval(function(){
     document.getElementById("purpose").innerHTML = Math.round(purpose);
 
     //change scale based on purpose
-    if(purpose >= 10 && purpose < 50 && operationNr === 0){
+    if(purpose >= 10 && operationNr === 0){
         purpose_scale.innerHTML = "A flea notices you and jumps onto your hair.";
         
         operationNr = 1;
     }
-    if(purpose >= 50 && purpose < 100 && operationNr === 1){
+    if(purpose >= 50 && operationNr === 1){
         purpose_scale.innerHTML = "A bird briefly lands near you before flying away.";
         //add the idle purpose button
         document.getElementById("Idle_reflection").appendChild(Idle_reflection);
         document.getElementById("Idle_reflection").insertAdjacentElement("beforeend", idleReflectionPriceDisplay);
         operationNr = 2;
     }
-    if(purpose >= 100 && purpose < 500 && operationNr === 2){
+    if(purpose >= 100 && operationNr === 2){
         purpose_scale.innerHTML = "A stray cat brushes against your leg.";
         document.getElementById("sharpenFocus").appendChild(sharpenFocus);
         document.getElementById("sharpenFocus").insertAdjacentElement("beforeend", sharpenFocusPriceDisplay);
         operationNr = 3;
     }
-    if(purpose >= 500 && purpose < 1000 && operationNr === 3){
+    if(purpose >= 500 && operationNr === 3){
         purpose_scale.innerHTML = "A child looks at you, and then quickly loses interest.";
         operationNr = 4;
     }
-    if(purpose >= 1000 && purpose < 10000 && operationNr === 4){
+    if(purpose >= 1000 && operationNr === 4){
         purpose_scale.innerHTML = "A neighbor glances at you through their window, but then averts his gaze.";
         operationNr = 5;
     }
-    if(purpose >= 10000 && purpose < 100000 && operationNr === 5){
+    if(purpose >= 10000 && operationNr === 5){
         purpose_scale.innerHTML = "A stranger pauses for a moment, sensing something familiar, then continues on without a second thought.";
         operationNr = 6;
     }
-    if(purpose >= 100000 && purpose < 1000000 && operationNr === 6){
+    if(purpose >= 100000 && operationNr === 6){
         purpose_scale.innerHTML = "Far away, your mother pauses while doing the dishes, a fleeting thought of you crossing her mind, though she can't quite recall why.";
         operationNr = 7;
     }
