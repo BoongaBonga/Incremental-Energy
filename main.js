@@ -1,3 +1,4 @@
+//VARIABLES
 let purpose = 0;
 let idleReflectionCount = 0;
 let idleReflectionPrice = 10;
@@ -9,8 +10,13 @@ let operationNr = 0;
 let seekValidationPurposeGain = 0;
 let sharpenFocusPurposeGain = 0;
 let IdleReflectionPurposeGain = 0;
+let totalPurposeGain = 0;
 const delay = 50;
 
+//MENU BUTTONS
+
+
+//UPGRADES
 //make the button and co-existing text
 //purpose scale
 const purpose_scale = document.getElementById("purpose_scale");
@@ -102,8 +108,15 @@ window.setInterval(function(){
     //seek validation purpose
     seekValidationPurposeGain = IdleReflectionPurposeGain * (seekValidationCount * 0.2);
     seekValidationPurposeGain = seekValidationPurposeGain + sharpenFocusPurposeGain * (seekValidationCount * 0.2);
-    purpose = purpose + IdleReflectionPurposeGain + sharpenFocusPurposeGain + seekValidationPurposeGain;
+    totalPurposeGain = IdleReflectionPurposeGain + sharpenFocusPurposeGain + seekValidationPurposeGain;
+    purpose = purpose + totalPurposeGain;
     document.getElementById("purpose").innerHTML = Math.round(purpose);
+
+    //change statistics
+    document.getElementById("idleReflectionStatistics").innerHTML = Math.round(IdleReflectionPurposeGain / (delay/1000) * 100)/100;
+    document.getElementById("sharpenFocusStatistics").innerHTML = Math.round(sharpenFocusPurposeGain / (delay/1000) * 100)/100;
+    document.getElementById("seekValidationStatistics").innerHTML = Math.round(seekValidationPurposeGain / (delay/1000) * 100)/100;
+    document.getElementById("totalPurposeGain").innerHTML = Math.round(totalPurposeGain / (delay/1000) * 100)/100;
 
     //change scale based on purpose
     if(purpose >= 10 && operationNr === 0){

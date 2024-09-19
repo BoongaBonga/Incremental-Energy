@@ -1,6 +1,13 @@
 <head> <link rel="stylesheet" href="style.css"> </head>
 <body>
 <p style = "font-size: 25px; height: 9"><b>You have <span id="purpose">0</span> purpose.</b></p>
+<div style ="position: absolute; right: 10px; top: 13; text-align: end;">
+    <strong>Statistics</strong>
+    <p style="margin-bottom: 0px; margin-top: 0px;">Idle reflection: <span id = "idleReflectionStatistics">0</span> purpose/s</p>
+    <p style="margin-bottom: 0px; margin-top: 4px;">Sharpen focus: <span id = "sharpenFocusStatistics">0</span> purpose/s</p>
+    <p style="margin-bottom: 0px; margin-top: 4px;">Seek validation: <span id = "seekValidationStatistics">0</span> purpose/s</p>
+    <p style="margin-bottom: 0px; margin-top: 4px;">Total: <span id = "totalPurposeGain">0</span> purpose/s</p>
+</div>
 <p><span id = "purpose_scale">No one cares about you.</span></p>
 <div style = "height: 12; width: 100;"></div>
 <button onClick = "gainPurpose(1)" style = "font-size: 15px;">Gain purpose</button>
