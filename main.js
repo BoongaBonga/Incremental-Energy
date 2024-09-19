@@ -40,7 +40,7 @@ seekValidationButton.setAttribute("id", "seekValidationButton");
 seekValidationButton.setAttribute("onClick", "buySeekValidation(1)");
 //seek validation price display
 const seekValidationPriceDisplay = document.createElement("p");
-seekValidationPriceDisplay.innerHTML = "Buy for <span id='seekValidationPriceDisplayID'>15</span> purpose (+10% all purpose)";
+seekValidationPriceDisplay.innerHTML = "Buy for <span id='seekValidationPriceDisplayID'>15</span> purpose (+20% all purpose)";
 seekValidationPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
 
 //function for gaining purpose on click
@@ -81,7 +81,7 @@ function buySeekValidation(count){
     if(purpose >= seekValidationPrice){
         purpose = purpose - seekValidationPrice;
         seekValidationCount = seekValidationCount + count;
-        seekValidationPrice = Math.round(seekValidationPrice * 1.15);
+        seekValidationPrice = Math.round(seekValidationPrice * 1.1);
         document.getElementById("seekValidationPriceDisplayID").innerHTML = seekValidationPrice;
     } else {
         seekValidationButton.innerHTML = "Not enough purpose";
@@ -97,8 +97,8 @@ window.setInterval(function(){
     //sharpen focus purpose
     purpose = purpose + idleReflectionCount * (delay/2000) * (sharpenFocusCount * 0.5);
     //seek validation purpose
-    purpose = purpose + idleReflectionCount * (delay/2000) * (seekValidationCount * 0.1);
-    purpose = purpose + idleReflectionCount * (delay/2000) * (sharpenFocusCount * 0.5) * (seekValidationCount * 0.1);
+    purpose = purpose + idleReflectionCount * (delay/2000) * (seekValidationCount * 0.2);
+    purpose = purpose + idleReflectionCount * (delay/2000) * (sharpenFocusCount * 0.5) * (seekValidationCount * 0.2);
     document.getElementById("purpose").innerHTML = Math.round(purpose);
 
     //change scale based on purpose
