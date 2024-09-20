@@ -83,7 +83,7 @@ function gainPurpose(gain){
 
 //functions for buying purpose gain upgrade
 function buyIdleReflection(count){
-    for(let i = 0; i<count; i++){
+    for(let i = 1; i<=count; i++){
         if(purpose >= idleReflectionPrice){
             purpose = purpose - idleReflectionPrice;
             idleReflectionCount = idleReflectionCount + count;
@@ -98,7 +98,7 @@ function buyIdleReflection(count){
 }
 
 function buySharpenFocus(count){
-    for(let i = 0; i<count; i++){
+    for(let i = 1; i<=count; i++){
         if(purpose >= sharpenFocusPrice){
             purpose = purpose - sharpenFocusPrice;
             sharpenFocusCount = sharpenFocusCount + count;
@@ -113,7 +113,7 @@ function buySharpenFocus(count){
 }
 
 function buySeekValidation(count){
-    for(let i = 0; i<count; i++){
+    for(let i = 1; i<=count; i++){
         if(purpose >= seekValidationPrice){
             purpose = purpose - seekValidationPrice;
             seekValidationCount = seekValidationCount + 1;
