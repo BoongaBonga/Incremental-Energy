@@ -127,14 +127,47 @@ function buySeekValidation(count){
     }
 }
 
-function idleReflectionBuyMax(){
-    buyIdleReflection(Math.round(purpose/idleReflectionPrice));
+//buy max functions
+function idleReflectionBuyMax() {
+    let count = 0;
+    let currentPrice = idleReflectionPrice;
+    let affordable = purpose;
+
+    while (affordable >= currentPrice) {
+        affordable -= currentPrice;
+        currentPrice = Math.round(currentPrice * 1.1); // Update price after each purchase
+        count++;
+    }
+
+    buyIdleReflection(count);
 }
-function sharpenFocusBuyMax(){
-    buySharpenFocus(Math.round(purpose/sharpenFocusPrice));
+
+function sharpenFocusBuyMax() {
+    let count = 0;
+    let currentPrice = sharpenFocusPrice;
+    let affordable = purpose;
+
+    while (affordable >= currentPrice) {
+        affordable -= currentPrice;
+        currentPrice = Math.round(currentPrice * 1.15); // Update price after each purchase
+        count++;
+    }
+
+    buySharpenFocus(count);
 }
-function seekValidationBuyMax(){
-    buySeekValidation(Math.round(purpose/seekValidationPrice));
+
+function seekValidationBuyMax() {
+    let count = 0;
+    let currentPrice = seekValidationPrice;
+    let affordable = purpose;
+
+    while (affordable >= currentPrice) {
+        affordable -= currentPrice;
+        currentPrice = Math.round(currentPrice * 1.1); // Update price after each purchase
+        count++;
+    }
+
+    buySeekValidation(count);
 }
 
 //increase purpose counter every (delay)ms
