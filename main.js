@@ -40,6 +40,10 @@ const idleReflectionPriceDisplay = document.createElement("p");
 idleReflectionPriceDisplay.innerHTML ="Buy for <span id = 'idleReflectionPriceID'>10</span> purpose (0.5 purpose/s)"
 idleReflectionPriceDisplay.setAttribute("id", "'idleReflectionPriceDisplay'");
 idleReflectionPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
+//idle reflection buy max
+const idleReflectionBuyMax = document.createElement("button");
+idleReflectionBuyMax.textContent = "Buy max";
+idleReflectionBuyMax.setAttribute("onClick", "idleReflectionBuyMax()");
 
 //sharpen focus button
 const sharpenFocus = document.createElement("button");
@@ -50,6 +54,10 @@ sharpenFocus.setAttribute("onClick", "buySharpenFocus(1)");
 const sharpenFocusPriceDisplay = document.createElement("p");
 sharpenFocusPriceDisplay.innerHTML = "Buy for <span id = 'sharpenFocusPriceDisplayID'>30</span> purpose (+50% Idle reflection effectiveness)";
 sharpenFocusPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
+//sharpen focus buy max
+const sharpenFocusBuyMax = document.createElement("button");
+sharpenFocusBuyMax.textContent = "Buy max";
+sharpenFocusBuyMax.setAttribute("onClick", "sharpenFocusBuyMax()");
 
 //seek validation button
 const seekValidationButton = document.createElement("button");
@@ -60,6 +68,10 @@ seekValidationButton.setAttribute("onClick", "buySeekValidation(1)");
 const seekValidationPriceDisplay = document.createElement("p");
 seekValidationPriceDisplay.innerHTML = "Buy for <span id='seekValidationPriceDisplayID'>100</span> purpose (+20% all purpose)";
 seekValidationPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
+//seek validation buy max
+const seekValidationBuyMax = document.createElement("button");
+seekValidationBuyMax.textContent = "Buy max";
+seekValidationBuyMax.setAttribute("onClick", "seekValidationBuyMax()");
 
 //function for gaining purpose on click
 function gainPurpose(gain){
@@ -108,6 +120,16 @@ function buySeekValidation(count){
     }
 }
 
+function idleReflectionBuyMax(){
+    buyIdleReflection(Math.round(purpose/idleReflectionPrice));
+}
+function sharpenFocusBuyMax(){
+    buySharpenFocus(Math.round(purpose/sharpenFocusPrice));
+}
+function seekValidationBuyMax(){
+    buySeekValidation(Math.round(purpose/seekValidationPrice));
+}
+
 //increase purpose counter every (delay)ms
 window.setInterval(function(){
     //idle reflection purpose
@@ -137,12 +159,14 @@ window.setInterval(function(){
         purpose_scale.innerHTML = "A bird briefly lands near you before flying away.";
         //add the idle purpose button
         document.getElementById("Idle_reflection").appendChild(Idle_reflection);
+        document.getElementById("Idle_reflection").insertAdjacentElement("beforeend", idleReflectionBuyMax);
         document.getElementById("Idle_reflection").insertAdjacentElement("beforeend", idleReflectionPriceDisplay);
         operationNr = 2;
     }
     if(purpose >= 100 && operationNr === 2){
         purpose_scale.innerHTML = "A stray cat brushes against your leg.";
         document.getElementById("sharpenFocus").appendChild(sharpenFocus);
+        document.getElementById("sharpenFocus").insertAdjacentElement("beforeend", sharpenFocusBuyMax);
         document.getElementById("sharpenFocus").insertAdjacentElement("beforeend", sharpenFocusPriceDisplay);
         operationNr = 3;
     }
@@ -153,6 +177,7 @@ window.setInterval(function(){
     if(purpose >= 1000 && operationNr === 4){
         purpose_scale.innerHTML = "A neighbor glances at you through their window, but then averts his gaze.";
         document.getElementById("seekValidation").appendChild(seekValidationButton);
+        document.getElementById("seekValidation").insertAdjacentElement("beforeend", seekValidationBuyMax);
         document.getElementById("seekValidation").insertAdjacentElement("beforeend", seekValidationPriceDisplay);
         operationNr = 5;
     }
