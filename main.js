@@ -15,6 +15,7 @@ const delay = 50;
 const statisticsClass = document.getElementsByClassName("statistic");
 
 //MENU BUTTONS
+//statistics
 function statisticsDropdown(){
     for(let i = 0; i < statisticsClass.length; i++){
         if(statisticsClass[i].style.visibility === "hidden"){
