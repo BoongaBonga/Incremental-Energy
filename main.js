@@ -35,10 +35,10 @@ const purpose_scale = document.getElementById("purpose_scale");
 const Idle_reflection = document.createElement("button");
 Idle_reflection.textContent = "Idle reflection";
 Idle_reflection.setAttribute("id", "Idle_reflection");
-Idle_reflection.setAttribute("onClick", "buyIdleReflection(1)");
+Idle_reflection.setAttribute("onClick", "buyIdleReflection()");
 //idle reflection price display
 const idleReflectionPriceDisplay = document.createElement("p");
-idleReflectionPriceDisplay.innerHTML ="Buy for <span id = 'idleReflectionPriceID'>10</span> purpose (0.5 purpose/s)"
+idleReflectionPriceDisplay.innerHTML ="Buy for <span id = 'idleReflectionPriceDisplayID'>10</span> purpose (0.5 purpose/s)"
 idleReflectionPriceDisplay.setAttribute("id", "'idleReflectionPriceDisplay'");
 idleReflectionPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
 //idle reflection buy max
@@ -50,7 +50,7 @@ idleReflectionBuyMaxButton.setAttribute("onClick", "idleReflectionBuyMax()");
 const sharpenFocus = document.createElement("button");
 sharpenFocus.textContent = "Sharpen focus";
 sharpenFocus.setAttribute("id", "sharpenFocusButton");
-sharpenFocus.setAttribute("onClick", "buySharpenFocus(1)");
+sharpenFocus.setAttribute("onClick", "buySharpenFocus()");
 //sharpen focus price display
 const sharpenFocusPriceDisplay = document.createElement("p");
 sharpenFocusPriceDisplay.innerHTML = "Buy for <span id = 'sharpenFocusPriceDisplayID'>30</span> purpose (+50% Idle reflection effectiveness)";
@@ -64,7 +64,7 @@ sharpenFocusBuyMaxButton.setAttribute("onClick", "sharpenFocusBuyMax()");
 const seekValidationButton = document.createElement("button");
 seekValidationButton.textContent = "Seek validation";
 seekValidationButton.setAttribute("id", "seekValidationButton");
-seekValidationButton.setAttribute("onClick", "buySeekValidation(1)");
+seekValidationButton.setAttribute("onClick", "buySeekValidation()");
 //seek validation price display
 const seekValidationPriceDisplay = document.createElement("p");
 seekValidationPriceDisplay.innerHTML = "Buy for <span id='seekValidationPriceDisplayID'>100</span> purpose (+20% all purpose)";
@@ -82,92 +82,70 @@ function gainPurpose(gain){
 }
 
 //functions for buying purpose gain upgrade
-function buyIdleReflection(count){
-    for(let i = 1; i<=count; i++){
-        if(purpose >= idleReflectionPrice){
-            purpose = purpose - idleReflectionPrice;
-            idleReflectionCount = idleReflectionCount + count;
-            idleReflectionPrice = Math.round(idleReflectionPrice * 1.1);
-            document.getElementById("idleReflectionPriceID").innerHTML = idleReflectionPrice;
-        } else{
-            Idle_reflection.innerHTML = "Not enough purpose";
-            setTimeout(1000);
-            Idle_reflection.innerHTML = "Idle reflection";
-        }
+//buying idle reflection normal and max
+function buyIdleReflection(){
+    if(purpose >= idleReflectionPrice){
+        purpose = purpose - idleReflectionPrice;
+        idleReflectionCount = idleReflectionCount + 1;
+        idleReflectionPrice = Math.round(idleReflectionPrice * 1.1);
+        document.getElementById("idleReflectionPriceDisplayID").innerHTML = idleReflectionPrice;
+    } else{
+        Idle_reflection.innerHTML = "Not enough purpose";
+        setTimeout(1000);
+        Idle_reflection.innerHTML = "Idle reflection";
     }
 }
-
-function buySharpenFocus(count){
-    for(let i = 1; i<=count; i++){
-        if(purpose >= sharpenFocusPrice){
-            purpose = purpose - sharpenFocusPrice;
-            sharpenFocusCount = sharpenFocusCount + count;
-            sharpenFocusPrice = Math.round(sharpenFocusPrice * 1.15);
-            document.getElementById("sharpenFocusPriceDisplayID").innerHTML = sharpenFocusPrice;
-        } else {
-            Idle_reflection.innerHTML = "Not enough purpose";
-            setTimeout(1000);
-            Idle_reflection.innerHTML = "Sharpen focus";
-        }
+function idleReflectionBuyMax(){
+    while(purpose > idleReflectionPrice){
+        purpose -= idleReflectionPrice;
+        idleReflectionPrice = Math.round(idleReflectionPrice * 1.1);
+        idleReflectionCount ++;
     }
+    document.getElementById("idleReflectionPriceDisplayID").innerHTML = idleReflectionPrice;
 }
 
-function buySeekValidation(count){
-    for(let i = 1; i<=count; i++){
-        if(purpose >= seekValidationPrice){
-            purpose = purpose - seekValidationPrice;
-            seekValidationCount = seekValidationCount + 1;
-            seekValidationPrice = Math.round(seekValidationPrice * 1.1);
-            document.getElementById("seekValidationPriceDisplayID").innerHTML = seekValidationPrice;
-        } else {
-            seekValidationButton.innerHTML = "Not enough purpose";
-            setTimeout(1000);
-            seekValidationButton.innerHTML = "Seek validation";
-        }
+//buying sharpen focus normal and max
+function buySharpenFocus(){
+    if(purpose >= sharpenFocusPrice){
+        purpose = purpose - sharpenFocusPrice;
+        sharpenFocusCount = sharpenFocusCount + 1;
+        sharpenFocusPrice = Math.round(sharpenFocusPrice * 1.15);
+        document.getElementById("sharpenFocusPriceDisplayID").innerHTML = sharpenFocusPrice;
+    } else {
+        Idle_reflection.innerHTML = "Not enough purpose";
+        setTimeout(1000);
+        Idle_reflection.innerHTML = "Sharpen focus";
     }
 }
-
-//buy max functions
-function idleReflectionBuyMax() {
-    let count = 0;
-    let currentPrice = idleReflectionPrice;
-    let affordable = purpose;
-
-    while (affordable >= currentPrice) {
-        affordable -= currentPrice;
-        currentPrice = Math.round(currentPrice * 1.1); // Update price after each purchase
-        count++;
+function sharpenFocusBuyMax(){
+    while(purpose > sharpenFocusPrice){
+        purpose -= sharpenFocusPrice;
+        sharpenFocusPrice = Math.round(sharpenFocusPrice * 1.15);
+        sharpenFocusCount ++;
     }
-
-    buyIdleReflection(count);
+    document.getElementById("sharpenFocusPriceDisplayID").innerHTML = sharpenFocusPrice;
 }
 
-function sharpenFocusBuyMax() {
-    let count = 0;
-    let currentPrice = sharpenFocusPrice;
-    let affordable = purpose;
-
-    while (affordable >= currentPrice) {
-        affordable -= currentPrice;
-        currentPrice = Math.round(currentPrice * 1.15); // Update price after each purchase
-        count++;
+//buying seekvalidation normal and max
+function buySeekValidation(){
+    if(purpose >= seekValidationPrice){
+        purpose = purpose - seekValidationPrice;
+        seekValidationCount = seekValidationCount + 1;
+        seekValidationPrice = Math.round(seekValidationPrice * 1.2);
+        document.getElementById("seekValidationPriceDisplayID").innerHTML = seekValidationPrice;
+    } else {
+        seekValidationButton.innerHTML = "Not enough purpose";
+        setTimeout(1000);
+        seekValidationButton.innerHTML = "Seek validation";
     }
-
-    buySharpenFocus(count);
 }
-
-function seekValidationBuyMax() {
-    let count = 0;
-    let currentPrice = seekValidationPrice;
-    let affordable = purpose;
-
-    while (affordable >= currentPrice) {
-        affordable -= currentPrice;
-        currentPrice = Math.round(currentPrice * 1.1); // Update price after each purchase
-        count++;
+function seekValidationBuyMax(){
+    while(purpose > seekValidationPrice){
+        purpose -= seekValidationPrice;
+        seekValidationPrice = Math.round(seekValidationPrice * 1.2);
+        seekValidationCount ++;
     }
-
-    buySeekValidation(count);
+    document.getElementById("seekValidationPriceDisplayID").innerHTML = seekValidationPrice;
 }
 
 //increase purpose counter every (delay)ms
