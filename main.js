@@ -74,6 +74,15 @@ const seekValidationBuyMaxButton = document.createElement("button");
 seekValidationBuyMaxButton.textContent = "Buy max";
 seekValidationBuyMaxButton.setAttribute("onClick", "seekValidationBuyMax()");
 
+//find your balance slider
+const findYourBalanceSlider = document.createElement("input");
+findYourBalanceSlider.setAttribute("type", "range");
+findYourBalanceSlider.setAttribute("style", "margin-top: 20px;");
+//find your balance text
+const findYourBalanceTopText = document.createElement("strong");
+findYourBalanceTopText.textContent = "Find your balance";
+findYourBalanceTopText.setAttribute("style", "font-size: 20px;");
+
 //function for gaining purpose on click
 function gainPurpose(gain){
     //increment purpose counter
@@ -205,10 +214,24 @@ window.setInterval(function(){
     }
     if(purpose >= 100000 && operationNr === 6){
         purpose_scale.innerHTML = "Far away, your mother pauses while doing the dishes, a fleeting thought of you crossing her mind, though she can't quite recall why.";
+        document.getElementById("findYourBalance").appendChild(findYourBalanceSlider);
+        document.getElementById("findYourBalance").insertAdjacentElement("beforebegin", findYourBalanceTopText);
         operationNr = 7;
     }
     if(purpose >= 1000000 && operationNr === 7){
         purpose_scale.innerHTML = "Your mother sits down with an old photo album, her heart aching with a vague sense of loss. She pauses on a picture of you but quickly moves on.";
         operationNr = 8;
+    }
+    if(purpose >= 10000000 && operationNr === 8){
+        purpose_scale.innerHTML = "Strangers find themselves speaking your name in conversation, though they aren't sure where they heard it.";
+        operationNr = 9;
+    }
+    if(purpose >= 100000000 && operationNr === 9){
+        purpose_scale.innerHTML = "Your name appears in a forgotten note, written long ago, though no one remembers why.";
+        operationNr = 10;
+    }
+    if(purpose >= 1000000000 && operationNr === 10){
+        purpose_scale.innerHTML = "Whispers of your existence echo in distant places, though the source remains unknown.";
+        operationNr = 11;
     }
 }, delay);
