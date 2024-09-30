@@ -31,6 +31,11 @@ function statisticsDropdown(){
 //purpose scale
 const purpose_scale = document.getElementById("purpose_scale");
 
+//improve yourself text
+const improveYourselfTopText = document.createElement("strong");
+improveYourselfTopText.textContent = "Improve yourself";
+improveYourselfTopText.setAttribute("style", "font-size: 20px;");
+
 //idle reflection button
 const Idle_reflection = document.createElement("button");
 Idle_reflection.textContent = "Idle reflection";
@@ -185,6 +190,7 @@ window.setInterval(function(){
     if(purpose >= 50 && operationNr === 1){
         purpose_scale.innerHTML = "A bird briefly lands near you before flying away.";
         //add the idle purpose button
+        document.getElementById("improveYourselfContainer").insertAdjacentElement("afterbegin", improveYourselfTopText);
         document.getElementById("Idle_reflection").appendChild(Idle_reflection);
         document.getElementById("Idle_reflection").insertAdjacentElement("beforeend", idleReflectionBuyMaxButton);
         document.getElementById("Idle_reflection").insertAdjacentElement("beforeend", idleReflectionPriceDisplay);
