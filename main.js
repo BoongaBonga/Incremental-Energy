@@ -11,6 +11,9 @@ let seekValidationPurposeGain = 0;
 let sharpenFocusPurposeGain = 0;
 let IdleReflectionPurposeGain = 0;
 let totalPurposeGain = 0;
+let findBalancePercent = 0;
+let findBalancePurposeGain = 0;
+let findBalanceSliderSpeed = 10;
 const delay = 50;
 const statisticsClass = document.getElementsByClassName("statistic");
 
@@ -87,13 +90,42 @@ findYourBalanceSlider.setAttribute("style", "margin-top: 20px;");
 const findYourBalanceTopText = document.createElement("strong");
 findYourBalanceTopText.textContent = "Find your balance";
 findYourBalanceTopText.setAttribute("style", "font-size: 20px;");
+//more text
+const findYourBalanceBottomText = document.createElement("p");
+findYourBalanceBottomText.textContent = "Click the button as close to the middle as possible";
+findYourBalanceBottomText.setAttribute("style", "margin-top: 4px; margin-bottom: 0px;");
+//find your balance button
+const findYourBalanceButton = document.createElement("button");
+findYourBalanceButton.textContent = "Find balance";
+findYourBalanceButton.setAttribute("onClick", "findBalance()");
 
+
+//FUNCTIONALITY
 //function for gaining purpose on click
 function gainPurpose(gain){
     //increment purpose counter
     purpose = purpose + gain;
     
 }
+
+//functions for find your balance minigame
+function findBalance(){
+    findBalancePercent = (25 - Math.abs(findYourBalanceSlider.value - 50)) * 4;
+    purpose += totalPurposeGain * findBalancePercent;
+}
+
+let invertVal = 1;
+window.setInterval(function(){
+    // Convert the slider value to an integer and add invertVal
+    findYourBalanceSlider.value = parseInt(findYourBalanceSlider.value) + invertVal;
+
+    // Reverse direction if the slider reaches the top or bottom
+    if (findYourBalanceSlider.value >= 100 || findYourBalanceSlider.value <= 0) {
+        invertVal *= -1; // Reverse direction
+    }
+}, findBalanceSliderSpeed);
+
+
 
 //functions for buying purpose gain upgrade
 //buying idle reflection normal and max
@@ -171,7 +203,8 @@ window.setInterval(function(){
     //seek validation purpose
     seekValidationPurposeGain = IdleReflectionPurposeGain * (seekValidationCount * 0.2);
     seekValidationPurposeGain = seekValidationPurposeGain + sharpenFocusPurposeGain * (seekValidationCount * 0.2);
-    totalPurposeGain = IdleReflectionPurposeGain + sharpenFocusPurposeGain + seekValidationPurposeGain;
+    //total purpose
+    totalPurposeGain = IdleReflectionPurposeGain + sharpenFocusPurposeGain + seekValidationPurposeGain + findBalancePurposeGain;
     purpose = purpose + totalPurposeGain;
     document.getElementById("purpose").innerHTML = Math.round(purpose);
 
@@ -222,6 +255,8 @@ window.setInterval(function(){
         purpose_scale.innerHTML = "Far away, your mother pauses while doing the dishes, a fleeting thought of you crossing her mind, though she can't quite recall why.";
         document.getElementById("findYourBalance").appendChild(findYourBalanceSlider);
         document.getElementById("findYourBalance").insertAdjacentElement("beforebegin", findYourBalanceTopText);
+        document.getElementById("findYourBalance").insertAdjacentElement("beforebegin", findYourBalanceBottomText);
+        document.getElementById("findYourBalance").insertAdjacentElement("afterend", findYourBalanceButton);
         operationNr = 7;
     }
     if(purpose >= 1000000 && operationNr === 7){
