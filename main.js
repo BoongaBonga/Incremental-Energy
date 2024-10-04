@@ -1,19 +1,27 @@
 //VARIABLES
 let purpose = 0;
+let totalPurposeGain = 0;
+//idle reflection
 let idleReflectionCount = 0;
 let idleReflectionPrice = 10;
+let IdleReflectionPurposeGain = 0;
+//sharpen focus
 let sharpenFocusCount = 0;
 let sharpenFocusPrice = 30;
+let sharpenFocusPurposeGain = 0;
+//seek validation
 let seekValidationCount = 0;
 let seekValidationPrice = 100;
-let operationNr = 0;
 let seekValidationPurposeGain = 0;
-let sharpenFocusPurposeGain = 0;
-let IdleReflectionPurposeGain = 0;
-let totalPurposeGain = 0;
+//find balance
 let findBalancePercent = 0;
 let findBalancePurposeGain = 0;
 let findBalanceSliderSpeed = 10;
+//deepen resolve
+let deepenResolveCount = 0;
+let deepenResolvePrice = 50;
+let deepenResolvePurposeGain = 0;
+let operationNr = 0;
 const delay = 50;
 const statisticsClass = document.getElementsByClassName("statistic");
 
@@ -29,76 +37,6 @@ function statisticsDropdown(){
     }
 }
 
-//UPGRADES
-//make the button and co-existing text
-//purpose scale
-const purpose_scale = document.getElementById("purpose_scale");
-
-/*//improve yourself text
-const improveYourselfTopText = document.createElement("strong");
-improveYourselfTopText.textContent = "Improve yourself";
-improveYourselfTopText.setAttribute("style", "font-size: 20px;");
-
-//idle reflection button
-const Idle_reflection = document.createElement("button");
-Idle_reflection.textContent = "Idle reflection";
-Idle_reflection.setAttribute("id", "Idle_reflection");
-Idle_reflection.setAttribute("onClick", "buyIdleReflection()");
-//idle reflection price display
-const idleReflectionPriceDisplay = document.createElement("p");
-idleReflectionPriceDisplay.innerHTML ="Buy for <span id = 'idleReflectionPriceDisplayID'>10</span> purpose (0.5 purpose/s)"
-idleReflectionPriceDisplay.setAttribute("id", "'idleReflectionPriceDisplay'");
-idleReflectionPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
-//idle reflection buy max
-const idleReflectionBuyMaxButton = document.createElement("button");
-idleReflectionBuyMaxButton.textContent = "Buy max";
-idleReflectionBuyMaxButton.setAttribute("onClick", "idleReflectionBuyMax()");
-
-//sharpen focus button
-const sharpenFocus = document.createElement("button");
-sharpenFocus.textContent = "Sharpen focus";
-sharpenFocus.setAttribute("id", "sharpenFocusButton");
-sharpenFocus.setAttribute("onClick", "buySharpenFocus()");
-//sharpen focus price display
-const sharpenFocusPriceDisplay = document.createElement("p");
-sharpenFocusPriceDisplay.innerHTML = "Buy for <span id = 'sharpenFocusPriceDisplayID'>30</span> purpose (+50% Idle reflection effectiveness)";
-sharpenFocusPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
-//sharpen focus buy max
-const sharpenFocusBuyMaxButton = document.createElement("button");
-sharpenFocusBuyMaxButton.textContent = "Buy max";
-sharpenFocusBuyMaxButton.setAttribute("onClick", "sharpenFocusBuyMax()");
-
-//seek validation button
-const seekValidationButton = document.createElement("button");
-seekValidationButton.textContent = "Seek validation";
-seekValidationButton.setAttribute("id", "seekValidationButton");
-seekValidationButton.setAttribute("onClick", "buySeekValidation()");
-//seek validation price display
-const seekValidationPriceDisplay = document.createElement("p");
-seekValidationPriceDisplay.innerHTML = "Buy for <span id='seekValidationPriceDisplayID'>100</span> purpose (+20% all purpose)";
-seekValidationPriceDisplay.setAttribute("style", "margin-top: 4px; margin-bottom: 0px; margin-left: 10px;");
-//seek validation buy max
-const seekValidationBuyMaxButton = document.createElement("button");
-seekValidationBuyMaxButton.textContent = "Buy max";
-seekValidationBuyMaxButton.setAttribute("onClick", "seekValidationBuyMax()");
-
-//find your balance slider
-const findYourBalanceSlider = document.createElement("input");
-findYourBalanceSlider.setAttribute("type", "range");
-findYourBalanceSlider.setAttribute("style", "margin-top: 20px;");
-//find your balance text
-const findYourBalanceTopText = document.createElement("strong");
-findYourBalanceTopText.textContent = "Find your balance";
-findYourBalanceTopText.setAttribute("style", "font-size: 20px;");
-//more text
-const findYourBalanceBottomText = document.createElement("p");
-findYourBalanceBottomText.textContent = "Click the button as close to the middle as possible";
-findYourBalanceBottomText.setAttribute("style", "margin-top: 4px; margin-bottom: 0px;");
-//find your balance button
-const findYourBalanceButton = document.createElement("button");
-findYourBalanceButton.textContent = "Find balance";
-findYourBalanceButton.setAttribute("onClick", "findBalance()");*/
-
 
 //FUNCTIONALITY
 //function for gaining purpose on click
@@ -111,7 +49,9 @@ function gainPurpose(gain){
 //functions for find your balance minigame
 function findBalance(){
     findBalancePercent = (25 - Math.abs(findYourBalanceSlider.value - 50)) * 4;
+    deepenResolvePurposeGain = findBalancePercent * (0,40 * deepenResolveCount);
     purpose += totalPurposeGain * findBalancePercent;
+    purpose += totalPurposeGain * (findBalancePercent/100) * deepenResolvePurposeGain;
 }
 
 let invertVal = 1;
@@ -182,6 +122,25 @@ function seekValidationBuyMax(){
     document.getElementById("seekValidationPriceDisplayID").innerHTML = seekValidationPrice;
 }
 
+//buying deepen resolve normal and max
+function buyDeepenResolve(){
+    if(purpose >= deepenResolvePrice){
+        purpose = purpose - deepenResolvePrice;
+        deepenResolveCount = deepenResolveCount + 1;
+        deepenResolvePrice = Math.round(deepenResolvePrice * 1.35);
+        document.getElementById("deepenResolvePriceDisplayID").innerHTML = deepenResolvePrice;
+    }
+}
+function deepenResolveBuyMax(){
+    while(purpose > deepenResolvePrice){
+        purpose -= deepenResolvePrice;
+        deepenResolvePrice = Math.round(deepenResolvePrice * 1.35);
+        deepenResolveCount ++;
+    }
+    document.getElementById("deepenResolvePriceDisplayID").innerHTML = deepenResolvePrice;
+}
+
+
 //increase purpose counter every (delay)ms
 window.setInterval(function(){
     //idle reflection purpose
@@ -245,6 +204,9 @@ window.setInterval(function(){
         document.getElementById("findYourBalanceTip").style.display = "block";
         document.getElementById("findYourBalanceSlider").style.display = "block";
         document.getElementById("findYourBalanceButton").style.display = "block";
+        document.getElementById("deepenResolveButton").style.display = "block";
+        document.getElementById("deepenResolveBuyMax").style.display = "block";
+        document.getElementById("deepenResolvePriceDisplay").style.display = "block";
         operationNr = 7;
     }
     if(purpose >= 1000000 && operationNr === 7){

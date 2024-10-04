@@ -51,3 +51,15 @@
 #findYourBalanceButton{
     display: none;
 }
+#deepenResolveButton{
+    display: none;
+}
+#deepenResolveBuyMax{
+    display: none;
+}
+#deepenResolvePriceDisplay{
+    display: none;
+    margin-top: 4px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+}
