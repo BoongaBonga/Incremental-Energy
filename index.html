@@ -13,14 +13,31 @@
 <div style = "height: 12; width: 100;"></div>
 <button onClick = "gainPurpose(1)" style = "font-size: 15px;">Gain purpose</button>
 <div style="height: 55;"></div>
-<div id="improveYourselfContainer"></div>
+<strong id="improveYourself">Improve yourself</strong>
 <div style="height: 20px;"></div>
-<div style="height: 25; display: flex;" id="Idle_reflection"></div>
+<div style="height: 25; display: flex;" id="Idle_reflection">
+    <button id="idleReflectionButton" onclick="buyIdleReflection()">Idle reflection</button>
+    <button onclick="idleReflectionBuyMax()" id="idleReflectionBuyMax">Buy max</button>
+    <p id="idleReflectionPriceDisplay" style="margin-top: 4px; margin-bottom: 0px; margin-left: 10px;">Buy for <span id="idleReflectionPriceDisplayID">10</span> purpose (0.5 purpose/s)</p>
+</div>
 <div style="height: 15;"></div>
-<div style="height: 25; display: flex;" id="sharpenFocus"></div>
+<div style="height: 25; display: flex;" id="sharpenFocus">
+    <button id="sharpenFocusButton" onclick="buySharpenFocus()">Sharpen focus</button>
+    <button onclick="sharpenFocusBuyMax()" id="sharpenFocusBuyMax">Buy max</button>
+    <p id="sharpenFocusPriceDisplay">Buy for <span id="sharpenFocusPriceDisplayID">30</span> purpose (+50% Idle reflection effectiveness)</p>
+</div>
 <div style="height: 16;"></div>
-<div style="height: 25; display: flex;" id="seekValidation"></div>
+<div style="height: 25; display: flex;" id="seekValidation">
+    <button id="seekValidationButton" onclick="buySeekValidation()">Seek validation</button>
+    <button onclick="seekValidationBuyMax()" id="seekValidationBuyMax">Buy max</button>
+    <p id="seekValidationPriceDisplay">Buy for <span id="seekValidationPriceDisplayID">100</span> purpose (+20% all purpose)</p>
+</div>
 <div style="height: 60;"></div>
-<div style="height: auto; display: flex;" id="findYourBalance"></div>
+<strong id="findYourBalanceTitle">Find your balance</strong>
+<p id="findYourBalanceTip">Click the button as close to the middle as possible</p>
+<div style="height: auto; display: flex;" id="findYourBalance">
+    <input type="range" id="findYourBalanceSlider">
+</div>
+<button onClick="findBalance()" id="findYourBalanceButton">Find balance</button>
 </body>
 <script type="text/javascript" src="main.js"> </script>

@@ -1,13 +1,53 @@
+#improveYourself{
+    display: none;
+    font-size: 20px;
+}
+#idleReflectionButton{
+    display: none;
+}
+#idleReflectionBuyMax{
+    display: none;
+}
 #idleReflectionPriceDisplay{
-    height: 25px;
+    display: none;
+}
+#sharpenFocusButton{
+    display: none;
+}
+#sharpenFocusBuyMax{
+    display: none;
+}
+#sharpenFocusPriceDisplay{
+    display: none;
     margin-top: 4px;
     margin-bottom: 0px;
     margin-left: 10px;
 }
-
-#Idle_reflection{
-    position: relative;
-    height: 25px;
-    top: 0px;
-    margin-bottom: 3px;
+#seekValidationButton{
+    display: none;
+}
+#seekValidationBuyMax{
+    display: none;
+}
+#seekValidationPriceDisplay{
+    display: none;
+    margin-top: 4px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+}
+#findYourBalanceTitle{
+    display: none;
+    font-size: 20px;
+}
+#findYourBalanceTip{
+    display: none;
+    margin-top: 4px;
+    margin-bottom: 0px;
+}
+#findYourbalanceSlider{
+    display: none;
+    margin-top: 20px;
+}
+#findYourBalanceButton{
+    display: none;
 }

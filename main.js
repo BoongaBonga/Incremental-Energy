@@ -34,7 +34,7 @@ function statisticsDropdown(){
 //purpose scale
 const purpose_scale = document.getElementById("purpose_scale");
 
-//improve yourself text
+/*//improve yourself text
 const improveYourselfTopText = document.createElement("strong");
 improveYourselfTopText.textContent = "Improve yourself";
 improveYourselfTopText.setAttribute("style", "font-size: 20px;");
@@ -97,7 +97,7 @@ findYourBalanceBottomText.setAttribute("style", "margin-top: 4px; margin-bottom:
 //find your balance button
 const findYourBalanceButton = document.createElement("button");
 findYourBalanceButton.textContent = "Find balance";
-findYourBalanceButton.setAttribute("onClick", "findBalance()");
+findYourBalanceButton.setAttribute("onClick", "findBalance()");*/
 
 
 //FUNCTIONALITY
@@ -223,17 +223,16 @@ window.setInterval(function(){
     if(purpose >= 50 && operationNr === 1){
         purpose_scale.innerHTML = "A bird briefly lands near you before flying away.";
         //add the idle purpose button
-        document.getElementById("improveYourselfContainer").insertAdjacentElement("afterbegin", improveYourselfTopText);
-        document.getElementById("Idle_reflection").appendChild(Idle_reflection);
-        document.getElementById("Idle_reflection").insertAdjacentElement("beforeend", idleReflectionBuyMaxButton);
-        document.getElementById("Idle_reflection").insertAdjacentElement("beforeend", idleReflectionPriceDisplay);
+        document.getElementById("idleReflectionButton").style.display = "block";
+        document.getElementById("idleReflectionBuyMax").style.display = "block";
+        document.getElementById("idleReflectionPriceDisplay").style.display = "block";
         operationNr = 2;
     }
     if(purpose >= 100 && operationNr === 2){
         purpose_scale.innerHTML = "A stray cat brushes against your leg.";
-        document.getElementById("sharpenFocus").appendChild(sharpenFocus);
-        document.getElementById("sharpenFocus").insertAdjacentElement("beforeend", sharpenFocusBuyMaxButton);
-        document.getElementById("sharpenFocus").insertAdjacentElement("beforeend", sharpenFocusPriceDisplay);
+        document.getElementById("sharpenFocusButton").style.display = "block";
+        document.getElementById("sharpenFocusBuyMax").style.display = "block";
+        document.getElementById("sharpenFocusPriceDisplay").style.display = "block";
         operationNr = 3;
     }
     if(purpose >= 500 && operationNr === 3){
@@ -242,9 +241,9 @@ window.setInterval(function(){
     }
     if(purpose >= 1000 && operationNr === 4){
         purpose_scale.innerHTML = "A neighbor glances at you through their window, but then averts his gaze.";
-        document.getElementById("seekValidation").appendChild(seekValidationButton);
-        document.getElementById("seekValidation").insertAdjacentElement("beforeend", seekValidationBuyMaxButton);
-        document.getElementById("seekValidation").insertAdjacentElement("beforeend", seekValidationPriceDisplay);
+        document.getElementById("seekValidationButton").style.display = "block";
+        document.getElementById("seekValidationBuyMax").style.display = "block";
+        document.getElementById("seekValidationPriceDisplay").style.display = "block";
         operationNr = 5;
     }
     if(purpose >= 10000 && operationNr === 5){
@@ -253,10 +252,10 @@ window.setInterval(function(){
     }
     if(purpose >= 100000 && operationNr === 6){
         purpose_scale.innerHTML = "Far away, your mother pauses while doing the dishes, a fleeting thought of you crossing her mind, though she can't quite recall why.";
-        document.getElementById("findYourBalance").appendChild(findYourBalanceSlider);
-        document.getElementById("findYourBalance").insertAdjacentElement("beforebegin", findYourBalanceTopText);
-        document.getElementById("findYourBalance").insertAdjacentElement("beforebegin", findYourBalanceBottomText);
-        document.getElementById("findYourBalance").insertAdjacentElement("afterend", findYourBalanceButton);
+        document.getElementById("findYourBalanceTitle").style.display = "block";
+        document.getElementById("findYourBalanceTip").style.display = "block";
+        document.getElementById("findYourBalanceSlider").style.display = "block";
+        document.getElementById("findYourBalanceButton").style.display = "block";
         operationNr = 7;
     }
     if(purpose >= 1000000 && operationNr === 7){
