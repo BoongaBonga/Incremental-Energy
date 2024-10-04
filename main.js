@@ -135,10 +135,6 @@ function buyIdleReflection(){
         idleReflectionCount = idleReflectionCount + 1;
         idleReflectionPrice = Math.round(idleReflectionPrice * 1.1);
         document.getElementById("idleReflectionPriceDisplayID").innerHTML = idleReflectionPrice;
-    } else{
-        Idle_reflection.innerHTML = "Not enough purpose";
-        setTimeout(1000);
-        Idle_reflection.innerHTML = "Idle reflection";
     }
 }
 function idleReflectionBuyMax(){
@@ -157,10 +153,6 @@ function buySharpenFocus(){
         sharpenFocusCount = sharpenFocusCount + 1;
         sharpenFocusPrice = Math.round(sharpenFocusPrice * 1.15);
         document.getElementById("sharpenFocusPriceDisplayID").innerHTML = sharpenFocusPrice;
-    } else {
-        Idle_reflection.innerHTML = "Not enough purpose";
-        setTimeout(1000);
-        Idle_reflection.innerHTML = "Sharpen focus";
     }
 }
 function sharpenFocusBuyMax(){
@@ -179,10 +171,6 @@ function buySeekValidation(){
         seekValidationCount = seekValidationCount + 1;
         seekValidationPrice = Math.round(seekValidationPrice * 1.2);
         document.getElementById("seekValidationPriceDisplayID").innerHTML = seekValidationPrice;
-    } else {
-        seekValidationButton.innerHTML = "Not enough purpose";
-        setTimeout(1000);
-        seekValidationButton.innerHTML = "Seek validation";
     }
 }
 function seekValidationBuyMax(){
@@ -223,6 +211,7 @@ window.setInterval(function(){
     if(purpose >= 50 && operationNr === 1){
         purpose_scale.innerHTML = "A bird briefly lands near you before flying away.";
         //add the idle purpose button
+        document.getElementById("improveYourself").style.display = "block";
         document.getElementById("idleReflectionButton").style.display = "block";
         document.getElementById("idleReflectionBuyMax").style.display = "block";
         document.getElementById("idleReflectionPriceDisplay").style.display = "block";
